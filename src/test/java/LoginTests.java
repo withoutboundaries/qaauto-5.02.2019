@@ -26,7 +26,8 @@ public class LoginTests {
         signIn.click();
         //4
         WebElement meIcon = driver.findElement(By.xpath("//div[@class='nav-item__profile-member-photo nav-item__icon ghost-person']"));
-        meIcon.click();
+        meIcon.click()
+        ;
     }
 
 
