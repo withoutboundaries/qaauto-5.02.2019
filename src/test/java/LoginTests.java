@@ -69,8 +69,10 @@ public class LoginTests {
 
     @Test
     public void negativeLoginTest() {
-
     }
 
+    @Test
+    public void positiveLoginTest() {
+    }
 }
 
