@@ -7,6 +7,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.openqa.selenium.WebElement;
 
+import static java.lang.Thread.sleep;
+
 public class LoginTests {
     WebDriver driver;
 
@@ -18,7 +20,7 @@ public class LoginTests {
     }
 
     @AfterMethod
-    public void afterMethod () {
+    public void afterMethod() {
         driver.quit();
     }
 
@@ -47,13 +49,9 @@ public class LoginTests {
         */
 
         //ClassWork
-        WebElement userEmailField = driver.findElement(By.xpath("//input[@id='login-email']"));
-        WebElement userPasswordField = driver.findElement(By.xpath("//input[@id='login-password']"));
-        WebElement signInButton = driver.findElement(By.xpath("//input[@id='login-submit']"));
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.login("petrenkovira19890206@gmail.com", "love19890206love");
 
-        userEmailField.sendKeys("petrenkovira19890206@gmail.com");
-        userPasswordField.sendKeys("love19890206love");
-        signInButton.click();
 
         WebElement profileMenuItem = driver.findElement(By.xpath("//li[@id='profile-nav-item']"));
         profileMenuItem.isDisplayed();
@@ -68,8 +66,8 @@ public class LoginTests {
     }
 
     @Test
-    public void negativeLoginTest() {
-      //HomeWork #4
+    public void negativeLoginTestHomeWork() {
+        //HomeWork #4
 
         WebElement userEmailField = driver.findElement(By.xpath("//input[@id='login-email']"));
         WebElement userPasswordField = driver.findElement(By.xpath("//input[@id='login-password']"));
@@ -80,10 +78,15 @@ public class LoginTests {
         userPasswordField.sendKeys("love19890206love");
         signInButton.click();
 
+        try {
+            sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         WebElement alert1 = driver.findElement(By.xpath("//div[@id='error-for-username']"));
-        String alertText1 =alert1.getText();
+        String alertText1 = alert1.getText();
         //Assert.assertTrue(alertText1);
-        System.out.println (alertText1);
+        System.out.println(alertText1);
 
         /*TC #2. Fill in incorrect userEmailField but correct userPasswordField. Click on signInButton
         Expected:Hmm, we don't recognize that email. Please try again.*/
@@ -92,11 +95,11 @@ public class LoginTests {
         signInButton.click();
 
         WebElement alert2 = driver.findElement(By.xpath("//div[@id='error-for-username']"));
-        String alertText2 =alert2.getText();
+        String alertText2 = alert2.getText();
         WebElement profileMenuItem = driver.findElement(By.xpath("//li[@id='profile-nav-item']"));
         profileMenuItem.isDisplayed();
 
-        Assert.assertFalse (profileMenuItem.isDisplayed(),
+        Assert.assertFalse(profileMenuItem.isDisplayed(),
                 "userEmailField is incorrect");
 
         /*TC #3. Fill correct password in userEmailField and correct login in userPasswordField. Click on signInButton
@@ -106,9 +109,9 @@ public class LoginTests {
         signInButton.click();
 
         WebElement alert3 = driver.findElement(By.xpath("//div[@id='error-for-username']"));
-        String alertText3 =alert3.getText();
+        String alertText3 = alert3.getText();
         //Assert.assertTrue(alertText3);
-        System.out.println (alertText3);
+        System.out.println(alertText3);
 
         /*TC #4. Fill special symbols like '$%@&' in userEmailField but correct userPasswordField. Click on signInButton
         Expected: Be sure to include "+" and your country code. */
@@ -117,9 +120,9 @@ public class LoginTests {
         signInButton.click();
 
         WebElement alert4 = driver.findElement(By.xpath("//div[@id='error-for-username']"));
-        String alertText4 =alert4.getText();
+        String alertText4 = alert4.getText();
         //Assert.assertTrue(alertText4);
-        System.out.println (alertText4);
+        System.out.println(alertText4);
 
         /*TC #5.Fill 'asdfghjklzxcvbrtnfutndlsfgerwvjd' in userEmailField and correct userPasswordField. Click on signInButton
         Expected: message like 'such user does not exist' but it enables to go to SecurityVerificationTab: https://www.linkedin.com/checkpoint/challenge/AQFIRqi8W3pRWgAAAWkD693kPOCTnIjQ8chZ1V5oJTcDbcNfUq0KGvlIfFql8ooc6MohLgOXuP-sEVXlmmzuryWigIXixw?ut=2SDiFmlSMPkUE1
@@ -130,7 +133,27 @@ public class LoginTests {
 
     }
 
+    @Test
+    public void negativeLoginTest() {
+        //Classwork #5
+        WebElement userEmailField = driver.findElement(By.xpath("//input[@id='login-email']"));
+        WebElement userPasswordField = driver.findElement(By.xpath("//input[@id='login-password']"));
+        WebElement signInButton = driver.findElement(By.xpath("//input[@id='login-submit']"));
 
+        userEmailField.sendKeys("petrenkovira19890206@gmail.com");
+        userPasswordField.sendKeys("123456");
+        signInButton.click();
+
+        WebElement passwordErrorMessageBlock = driver.findElement(By.xpath("//div[@id='error-for-password']"));
+        Assert.assertTrue(passwordErrorMessageBlock.isDisplayed(),
+                "passwordErrorMessageBlock is not displayed on Home page");
+
+        Assert.assertEquals(passwordErrorMessageBlock.getText(),
+                "Hmm, that's not the right password. Please try again or request a new one.",
+                "Wrong validation message text for 'password' field.");
+
+
+    }
 
 
 }
