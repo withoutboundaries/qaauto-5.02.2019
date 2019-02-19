@@ -52,17 +52,12 @@ public class LoginTests {
         LandingPage landingPage = new LandingPage(driver);
         landingPage.login("petrenkovira19890206@gmail.com", "love19890206love");
 
+        HomePage homePage=new HomePage(driver);
+        Assert.assertTrue(homePage.isProfileNavMenuItemDisplayed(),
+               "Home page URL is incorrect" );
 
-        WebElement profileMenuItem = driver.findElement(By.xpath("//li[@id='profile-nav-item']"));
-        profileMenuItem.isDisplayed();
-        Assert.assertTrue(profileMenuItem.isDisplayed());
-      /*Assert.assertFalse(profileMenuItem.isDisplayed(),
-              "profileMenuItem is not displayed on Home page.");
-              */
-        Assert.assertEquals(
-                /*Actual*/ driver.getCurrentUrl(),
-                /*Expected*/"https://www.linkedin.com/feed/",
-                "Home page URL is incorrect");
+
+
     }
 
     @Test
