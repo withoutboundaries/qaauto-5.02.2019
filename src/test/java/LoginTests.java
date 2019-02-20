@@ -34,7 +34,12 @@ public class LoginTests {
         HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.isProfileNavMenuItemDisplayed(),
                 "Home page URL is incorrect");
+    }
 
+    @Test
+    public void negativeLoginTest () {
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.login("petrenkovira19890206@gmail.com", "12345");
 
         LoginSubmit loginSubmit = new LoginSubmit(driver);
         loginSubmit.submit("petrenkovira19890206@gmail.com", "123456");
@@ -43,9 +48,8 @@ public class LoginTests {
         Assert.assertEquals(loginSubmit.getPasswordErrorMessageBlockText(),
                 "Hmm, that's not the right password. Please try again or request a new one.",
                 "Wrong validation message text for 'password' field.");
-
-
     }
+
 }
 
 
