@@ -10,14 +10,14 @@ public class HomePage {
 
     public HomePage (WebDriver driver){
         this.driver = driver;
-        initElement ();
+        initElements ();
     }
 
-    public  void initElement() {
+    public  void initElements() {
         profileMenuItem = driver.findElement(By.xpath("//li[@id='profile-nav-item']"));
     }
 
-    public boolean isProfileNavMenuItemDisplayed (){
+    public boolean isProfileMenuItemDisplayed (){
         return profileMenuItem.isDisplayed();
     }
 

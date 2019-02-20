@@ -1,11 +1,10 @@
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.openqa.selenium.WebElement;
 
 import static java.lang.Thread.sleep;
 
@@ -32,8 +31,8 @@ public class LoginTests {
         landingPage.login("petrenkovira19890206@gmail.com", "love19890206love");
 
         HomePage homePage = new HomePage(driver);
-        Assert.assertTrue(homePage.isProfileNavMenuItemDisplayed(),
-                "Home page URL is incorrect");
+        Assert.assertTrue(homePage.isProfileMenuItemDisplayed(),
+                "profileMenuItem is not displayed on Home page");
     }
 
     @Test
