@@ -47,13 +47,13 @@ public class LoginTests {
     @Test
     public void negativeLoginTest () {
         LandingPage landingPage = new LandingPage(driver);
-        landingPage.login("petrenkovira19890206@gmail.com", "12345");
+        landingPage.login("petrenkovira19890206@gmail.com", "123456");
 
         LoginSubmit loginSubmit = new LoginSubmit(driver);
-        loginSubmit.submit("petrenkovira19890206@gmail.com", "123456");
+
         Assert.assertTrue(loginSubmit.isPasswordErrorMessageBlockDisplayed(),
                 "passwordErrorMessageBlock is not displayed on Home page");
-        Assert.assertEquals(loginSubmit.getPasswordErrorMessageBlockText(),
+        Assert.assertEquals(loginSubmit.passwordErrorMessageBlock.getText(),
                 "Hmm, that's not the right password. Please try again or request a new one.",
                 "Wrong validation message text for 'password' field.");
     }
