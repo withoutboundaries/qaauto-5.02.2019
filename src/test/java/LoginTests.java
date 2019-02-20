@@ -26,13 +26,13 @@ public class LoginTests {
 
     @Test
     public void successfulLoginTest() {
-
         LandingPage landingPage = new LandingPage(driver);
+        Assert.assertTrue(landingPage.isPageLoaded (), "Landing page is not loaded");
         landingPage.login("petrenkovira19890206@gmail.com", "love19890206love");
 
         HomePage homePage = new HomePage(driver);
-        Assert.assertTrue(homePage.isProfileMenuItemDisplayed(),
-                "profileMenuItem is not displayed on Home page");
+        Assert.assertTrue(homePage.isPageLoaded(),
+                "Home page is loaded");
     }
 
     @Test

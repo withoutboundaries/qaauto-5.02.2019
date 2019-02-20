@@ -4,16 +4,16 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class HomePage {
-    WebDriver driver;
+    private WebDriver driver;
 
-    WebElement profileMenuItem;
+    private WebElement profileMenuItem;
 
     public HomePage (WebDriver driver){
         this.driver = driver;
         initElements ();
     }
 
-    public  void initElements() {
+    private void initElements() {
         profileMenuItem = driver.findElement(By.xpath("//li[@id='profile-nav-item']"));
     }
 
