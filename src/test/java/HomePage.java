@@ -8,17 +8,22 @@ public class HomePage {
 
     private WebElement profileMenuItem;
 
-    public HomePage (WebDriver driver){
+    public HomePage(WebDriver driver) {
         this.driver = driver;
-        initElements ();
+        initElements();
     }
 
     private void initElements() {
         profileMenuItem = driver.findElement(By.xpath("//li[@id='profile-nav-item']"));
     }
 
-    public boolean isProfileMenuItemDisplayed (){
+    public boolean isProfileMenuItemDisplayed() {
         return profileMenuItem.isDisplayed();
     }
 
+    public boolean isPageLoaded() {
+        return profileMenuItem.isDisplayed()
+                && driver.getCurrentUrl().contains("/feed")
+                && driver.getTitle().contains("LinkedIn");
+    }
 }
