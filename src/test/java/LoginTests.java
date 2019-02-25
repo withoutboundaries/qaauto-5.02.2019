@@ -46,16 +46,14 @@ public class LoginTests {
     @DataProvider
     public Object[][] InValidData() {
         return new Object[][]{
-                {"", "love19890206love", "Please enter an email address or phone number", ""},
                 {"petrenkovira198902061@gmail.com", "love19890206love", "Hmm, we don't recognize that email. Please try again.", ""},
-                {"love19890206love", "petrenkovira19890206@gmail.com", "Please enter a valid username", ""},
-                {"$%@&", "love19890206love", "Be sure to include "+" and your country code.", ""},
-                {"asdfghjklzxcvbrtnfutndlsfgerwvjd", "love19890206love", "Please enter a valid username", ""},
+                {"love19890206love", "petrenkovira19890206@gmail.com", "Please enter a valid email address.", ""},
+                {"$%@&", "love19890206love", "Be sure to include \"+\" and your country code.", ""},
+                {"asdfghjklzxcvbrtnfutndlsfgerwvjd", "love19890206love", "Please enter a valid email address.", ""},
                 {"petrenkovira19890206@gmail.com", "love19890206lo", "", "Hmm, that's not the right password. Please try again or request a new one."},
 
         };
     }
-
 
     @Test(dataProvider = "InValidData")
     public void negativeLoginTest(String userEmail, String userPassword, String emailValidationMessage, String passwordValidationMessage) {
@@ -64,11 +62,12 @@ public class LoginTests {
 
         LoginSubmit loginSubmit = new LoginSubmit(driver);
 
-        Assert.assertTrue(loginSubmit.isPasswordErrorMessageBlockDisplayed(),
-                "passwordErrorMessageBlock is not displayed on Home page");
-        Assert.assertEquals(loginSubmit.passwordErrorMessageBlock.getText(),
-                "Hmm, that's not the right password. Please try again or request a new one.",
-                "Wrong validation message text for 'password' field.");
+
+        Assert.assertEquals(loginSubmit.emailErrorMessageBlock.getText(), emailValidationMessage,
+                "Login is incorrect");
+
+        Assert.assertEquals(loginSubmit.passwordErrorMessageBlock.getText(), passwordValidationMessage,
+                "Password is incorrect");
     }
 
 }
