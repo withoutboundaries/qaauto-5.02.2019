@@ -16,7 +16,8 @@ public class BadCodeExample {
 
 
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\gnatyshko_i\\IdeaProjects\\qaauto-5.02.2019\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver;
+        driver= new ChromeDriver();
         driver.get("https://www.google.com/");
 
         /* My HomeWork

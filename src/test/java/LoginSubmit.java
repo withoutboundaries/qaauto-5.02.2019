@@ -4,10 +4,10 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class LoginSubmit {
-    WebDriver driver;
-
-    WebElement emailErrorMessageBlock;
-    WebElement passwordErrorMessageBlock;
+    private WebDriver driver;
+    private WebElement loginForm;
+    WebElement userEmailValidationMessage;
+    WebElement userPasswordValidationMessage;;
 
     public LoginSubmit(WebDriver driver) {
         this.driver = driver;
@@ -15,15 +15,25 @@ public class LoginSubmit {
     }
 
     public void initElements() {
-        emailErrorMessageBlock = driver.findElement(By.xpath("//div[@id='error-for-username']"));
-        passwordErrorMessageBlock = driver.findElement(By.xpath("//div[@id='error-for-password']"));
-
-
+        loginForm=driver.findElement(By.xpath("//form[@class='login__form']"));
+        userEmailValidationMessage = driver.findElement(By.xpath("//div[@id='error-for-username']"));
+        userPasswordValidationMessage = driver.findElement(By.xpath("//div[@id='error-for-password']"));
     }
 
-    /*public boolean isPasswordErrorMessageBlockDisplayed () {
-        return passwordErrorMessageBlock.isDisplayed();
-    }*/
+    public boolean isPageLoaded() {
+        return loginForm.isDisplayed()
+                && driver.getCurrentUrl().contains("/login-submit")
+                && driver.getTitle().contains("LinkedIn");
+    }
+
+    public String getUserEmailValidationText() {
+        return userEmailValidationMessage.getText();
+    }
+
+    public String getUserPasswordValidationText() {
+        return userPasswordValidationMessage.getText();
+    }
+
 
 
 }

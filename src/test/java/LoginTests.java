@@ -56,18 +56,25 @@ public class LoginTests {
     }
 
     @Test(dataProvider = "InValidData")
-    public void negativeLoginTest(String userEmail, String userPassword, String emailValidationMessage, String passwordValidationMessage) {
+    public void negativeLoginTest(String userEmail,
+                                  String userPassword,
+                                  String emailValidationMessage,
+                                  String passwordValidationMessage)
+    {
         LandingPage landingPage = new LandingPage(driver);
+        Assert.assertTrue(landingPage.isPageLoaded(), "Landing page is not loaded");
         landingPage.login(userEmail, userPassword);
 
         LoginSubmit loginSubmit = new LoginSubmit(driver);
+        Assert.assertTrue(loginSubmit.isPageLoaded (),
+                "LoginSubmit is not loaded");
 
 
-        Assert.assertEquals(loginSubmit.emailErrorMessageBlock.getText(), emailValidationMessage,
-                "Login is incorrect");
+        Assert.assertEquals(loginSubmit.getUserEmailValidationText(), emailValidationMessage,
+                "userEmail validation message text is wrong");
 
-        Assert.assertEquals(loginSubmit.passwordErrorMessageBlock.getText(), passwordValidationMessage,
-                "Password is incorrect");
+        Assert.assertEquals(loginSubmit.getUserPasswordValidationText(),passwordValidationMessage,
+                "userPassword validation message text is wrong");
     }
 
 }
