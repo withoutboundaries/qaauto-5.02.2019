@@ -12,10 +12,10 @@ public class LoginSubmit {
     private WebElement loginForm;
 
     @FindBy(xpath ="//div[@id='error-for-username']")
-    WebElement userEmailValidationMessage;
+    private WebElement userEmailValidationMessage;
 
     @FindBy(xpath ="//div[@id='error-for-password']")
-    WebElement userPasswordValidationMessage;;
+    private WebElement userPasswordValidationMessage;;
 
     public LoginSubmit(WebDriver driver) {
         this.driver = driver;
