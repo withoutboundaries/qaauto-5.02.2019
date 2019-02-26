@@ -10,12 +10,15 @@ import org.testng.annotations.Test;
 
 public class LoginTests {
     WebDriver driver;
+    LandingPage landingPage;
 
     @BeforeMethod
     public void beforeTest() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\gnatyshko_i\\IdeaProjects\\qaauto-5.02.2019\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://www.linkedin.com/");
+        landingPage = new LandingPage(driver);
+
     }
 
     @AfterMethod
@@ -35,11 +38,10 @@ public class LoginTests {
 
     @Test(dataProvider = "ValidData")
     public void successfulLoginTest(String userEmail, String userPassword) {
-        LandingPage landingPage = new LandingPage(driver);
-        Assert.assertTrue(landingPage.isPageLoaded(), "Landing page is not loaded");
-        landingPage.login(userEmail, userPassword);
 
-        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(landingPage.isPageLoaded(), "Landing page is not loaded");
+
+        HomePage homePage = landingPage.login(userEmail, userPassword);
         Assert.assertTrue(homePage.isPageLoaded(), "Home page is loaded");
     }
 
@@ -61,11 +63,10 @@ public class LoginTests {
                                   String emailValidationMessage,
                                   String passwordValidationMessage)
     {
-        LandingPage landingPage = new LandingPage(driver);
-        Assert.assertTrue(landingPage.isPageLoaded(), "Landing page is not loaded");
-        landingPage.login(userEmail, userPassword);
 
-        LoginSubmit loginSubmit = new LoginSubmit(driver);
+        Assert.assertTrue(landingPage.isPageLoaded(), "Landing page is not loaded");
+        LoginSubmit loginSubmit =landingPage.loginToLoginSubmit(userEmail, userPassword);
+
         Assert.assertTrue(loginSubmit.isPageLoaded (),
                 "LoginSubmit is not loaded");
 
