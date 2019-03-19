@@ -8,6 +8,7 @@ public class BaseTest {
     WebDriver driver;
     LandingPage landingPage;
 
+
     @BeforeMethod
     public void beforeTest() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\gnatyshko_i\\IdeaProjects\\qaauto-5.02.2019\\chromedriver.exe");
