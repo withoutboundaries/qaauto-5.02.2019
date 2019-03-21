@@ -8,7 +8,7 @@ public class SearchTests extends BaseTest {
     @Test
     public void basicSearchTest() {
 
-        String searchTerm="HR";
+        String searchTerm = "HR";
         Assert.assertTrue(landingPage.isPageLoaded(), "Landing page is not loaded");
 
         HomePage homePage = landingPage.login("petrenkovira19890206@gmail.com", "love19890206love");
@@ -21,10 +21,11 @@ public class SearchTests extends BaseTest {
         Assert.assertEquals(searchPage.getSearchResultCount(), 10,
                 "Search results count is wrong");
 
-        List <String> searchResultsList= searchPage.getSearchResultsList ();
-        for(String searchResult: searchResultsList) {
+        List<String> searchResultsList = searchPage.getSearchResultsList();
+        for (String searchResult : searchResultsList) {
             Assert.assertTrue(searchResult.contains(searchTerm),
                     "pls write this message");
 
         }
+    }
 }
