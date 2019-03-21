@@ -27,21 +27,22 @@ public class SearchPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-/*
+
     public boolean isPageLoaded() throws InterruptedException {
-        sleep(3000);
+        Thread.sleep(3000);
         return resultsTotal.isDisplayed()
                 && driver.getCurrentUrl().contains("search/results")
                 && driver.getTitle().contains("| Search | LinkedIn");
     }
-    */
 
 
+/*
     public boolean isPageLoaded() {
         return resultsTotal.isDisplayed()
                 && driver.getCurrentUrl().contains("search/results/")
                 && driver.getTitle().contains("| Search | LinkedIn");
     }
+    */
 
 
     public int getSearchResultCount() {

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SearchTests extends BaseTest {
     @Test
-    public void basicSearchTest() {
+    public void basicSearchTest() throws InterruptedException {
 
         String searchTerm = "HR";
         Assert.assertTrue(landingPage.isPageLoaded(), "Landing page is not loaded");
