@@ -39,7 +39,7 @@ public class SearchPage {
 
     public boolean isPageLoaded() {
         return resultsTotal.isDisplayed()
-                && driver.getCurrentUrl().contains("search/results")
+                && driver.getCurrentUrl().contains("search/results/")
                 && driver.getTitle().contains("| Search | LinkedIn");
     }
 
@@ -57,6 +57,7 @@ public class SearchPage {
         }
         return resultsTextList;
     }
+
 
 }
 

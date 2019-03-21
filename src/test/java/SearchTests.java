@@ -14,6 +14,7 @@ public class SearchTests extends BaseTest {
         HomePage homePage = landingPage.login("petrenkovira19890206@gmail.com", "love19890206love");
         Assert.assertTrue(homePage.isPageLoaded(), "Home page is not loaded");
 
+
         SearchPage searchPage = homePage.search("HR");
         Assert.assertTrue(searchPage.isPageLoaded(), "Search page is not loaded");
 
@@ -24,8 +25,10 @@ public class SearchTests extends BaseTest {
         List<String> searchResultsList = searchPage.getSearchResultsList();
         for (String searchResult : searchResultsList) {
             Assert.assertTrue(searchResult.contains(searchTerm),
-                    "pls write this message");
+                    "Not every result on the page includes the word 'HR' ");
 
         }
+
     }
+
 }
