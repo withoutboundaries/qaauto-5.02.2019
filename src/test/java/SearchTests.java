@@ -17,6 +17,7 @@ public class SearchTests extends BaseTest {
         SearchPage searchPage = homePage.search("HR");
         Assert.assertTrue(searchPage.isPageLoaded(), "Search page is not loaded");
 
+
         Assert.assertEquals(searchPage.getSearchResultCount(), 10,
                 "Search results count is wrong");
 
@@ -26,8 +27,4 @@ public class SearchTests extends BaseTest {
                     "pls write this message");
 
         }
-
-
-
-
 }
