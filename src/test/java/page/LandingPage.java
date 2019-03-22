@@ -1,3 +1,4 @@
+package page;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,7 +30,7 @@ public class LandingPage {
         if (driver.getCurrentUrl().contains("/feed")) {
             return (T) new HomePage(driver);
         } else {
-            return (T) new LoginSubmit(driver);
+            return (T) new LoginSubmitPage(driver);
         }
     }
 
@@ -48,7 +49,7 @@ public class LandingPage {
         if (source == 1) {
             return new HomePage(driver);
         } else {
-            return new LoginSubmit(driver);
+            return new LoginSubmitPage(driver);
         }
     }
 

@@ -1,3 +1,4 @@
+package page;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -5,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class LoginSubmit {
+public class LoginSubmitPage {
     private WebDriver driver;
 
     @FindBy(xpath = "//form[@class='login__form']")
@@ -18,7 +19,7 @@ public class LoginSubmit {
     private WebElement userPasswordValidationMessage;
     ;
 
-    public LoginSubmit(WebDriver driver) {
+    public LoginSubmitPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
