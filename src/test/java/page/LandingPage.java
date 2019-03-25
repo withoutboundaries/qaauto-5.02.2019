@@ -1,5 +1,6 @@
 package page;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +18,9 @@ public class LandingPage {
 
     @FindBy(xpath = "//input[@id='login-submit']")
     private WebElement signInButton;
+
+    @FindBy(xpath = "//a[@class='link-forgot-password']")
+    private WebElement forgotPasswordField;
 
     public LandingPage(WebDriver driver) {
         this.driver = driver;
@@ -57,6 +61,10 @@ public class LandingPage {
         return signInButton.isDisplayed()
                 && driver.getCurrentUrl().equals("https://www.linkedin.com/")
                 && driver.getTitle().equals("LinkedIn: Log In or Sign Up");
+    }
 
+    public ForgotPasswordPage forgotpassword () {
+        forgotPasswordField.click();
+        return new ForgotPasswordPage (driver);
     }
 }
