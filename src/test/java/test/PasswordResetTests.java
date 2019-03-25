@@ -16,11 +16,14 @@ public class PasswordResetTests extends BaseTest {
         String newPasswordFieldText = "love19850526love";
         String retypeNewPasswordFieldText = "love19850526love";
 
+        //1
         Assert.assertTrue(landingPage.isPageLoaded(), "Landing page is not loaded");
 
-        ForgotPasswordPage forgotPasswordPage = landingPage.forgotpassword();
+        //2
+        ForgotPasswordPage forgotPasswordPage = landingPage.clickforgotpassword();
         Assert.assertTrue(forgotPasswordPage.isPageLoaded(), "ForgotPassword page is not loaded");
 
+        //3
         ResendLinkPage resendLinkPage = forgotPasswordPage.input(email);
         try {
             Thread.sleep(120000);
@@ -29,13 +32,15 @@ public class PasswordResetTests extends BaseTest {
         }
         Assert.assertTrue(resendLinkPage.isPageLoaded(), "ResendLink page is not loaded");
 
+        //4
+        ResetPasswordPage resetPasswordPage = resendLinkPage.resetPasswordUrl("https://www.linkedin.com/e/v2?e=bual58-jtogpdwi-81&lipi=urn%3Ali%3Apage%3Aemail_security_password_reset_checkpoint%3BQQgjLL5%2BRk2pCRZd67JTAg%3D%3D&a=checkpoint-password-reset&midToken=AQGtkiMu7W8DWA&tracking=eml-jav-saved-job&ek=security_password_reset_checkpoint&encryptedEmail=AgF5H0_BKoj_QAAAAWm1TxKN2zG2mMzOajWiit29oACyYZK3qMrCQP_3jItNBDqCOMy1N-82IH6ksMgLu8REWg&requestSubmissionId=AgHB5zw4jNTDegAAAWm1TxKWL_bzYWvdzl2x7GeP0X-Jge4-eBkgRgH9dOX4XKF-XB0w4xl3PlHOWdFAdS1jvJTj2STLk4A6wcPnpTYnZSQ&oneTimeToken=-725034495336784533&_sig=25THTfbDvQ58I1");
+        Assert.assertTrue(resetPasswordPage.isPageLoaded(), "Reset Password page is not loaded");
 
-        ResetPasswordPage resetPasswoordPage = resendLinkPage.resetPasswordUrl("https://www.linkedin.com/e/v2?e=bual58-jtogpdwi-81&lipi=urn%3Ali%3Apage%3Aemail_security_password_reset_checkpoint%3BQQgjLL5%2BRk2pCRZd67JTAg%3D%3D&a=checkpoint-password-reset&midToken=AQGtkiMu7W8DWA&tracking=eml-jav-saved-job&ek=security_password_reset_checkpoint&encryptedEmail=AgF5H0_BKoj_QAAAAWm1TxKN2zG2mMzOajWiit29oACyYZK3qMrCQP_3jItNBDqCOMy1N-82IH6ksMgLu8REWg&requestSubmissionId=AgHB5zw4jNTDegAAAWm1TxKWL_bzYWvdzl2x7GeP0X-Jge4-eBkgRgH9dOX4XKF-XB0w4xl3PlHOWdFAdS1jvJTj2STLk4A6wcPnpTYnZSQ&oneTimeToken=-725034495336784533&_sig=25THTfbDvQ58I1");
-        Assert.assertTrue(resetPasswoordPage.isPageLoaded(), "Reset Password page is not loaded");
-
-        PasswordResetSubmitPage passwordResetSubmitPage = resetPasswoordPage.successfulResetPassword(newPasswordFieldText, retypeNewPasswordFieldText);
+        //5
+        PasswordResetSubmitPage passwordResetSubmitPage = resetPasswordPage.successfulResetPassword(newPasswordFieldText, retypeNewPasswordFieldText);
         Assert.assertTrue(passwordResetSubmitPage.isPageLoaded(), "Password Reset Submit page is not loaded");
 
+        //6
         HomePage homePage = passwordResetSubmitPage.goToHomePage();
         Assert.assertTrue(homePage.isPageLoaded(), "Home page is not loaded");
     }

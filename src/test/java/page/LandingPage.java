@@ -63,7 +63,7 @@ public class LandingPage {
                 && driver.getTitle().equals("LinkedIn: Log In or Sign Up");
     }
 
-    public ForgotPasswordPage forgotpassword () {
+    public ForgotPasswordPage clickforgotpassword () {
         forgotPasswordField.click();
         return new ForgotPasswordPage (driver);
     }
