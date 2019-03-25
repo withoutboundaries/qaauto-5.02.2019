@@ -21,7 +21,7 @@ public class PasswordResetTests extends BaseTest {
 
         //2
         ForgotPasswordPage forgotPasswordPage = landingPage.clickforgotpassword();
-        Assert.assertTrue(forgotPasswordPage.isPageLoaded(), "ForgotPassword page is not loaded");
+        Assert.assertTrue(forgotPasswordPage.isPageLoaded(), "Forgot Password page is not loaded");
 
         //3
         ResendLinkPage resendLinkPage = forgotPasswordPage.input(email);
@@ -30,7 +30,7 @@ public class PasswordResetTests extends BaseTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Assert.assertTrue(resendLinkPage.isPageLoaded(), "ResendLink page is not loaded");
+        Assert.assertTrue(resendLinkPage.isPageLoaded(), "Resend Link page is not loaded");
 
         //4
         ResetPasswordPage resetPasswordPage = resendLinkPage.resetPasswordUrl("https://www.linkedin.com/e/v2?e=bual58-jtogpdwi-81&lipi=urn%3Ali%3Apage%3Aemail_security_password_reset_checkpoint%3BQQgjLL5%2BRk2pCRZd67JTAg%3D%3D&a=checkpoint-password-reset&midToken=AQGtkiMu7W8DWA&tracking=eml-jav-saved-job&ek=security_password_reset_checkpoint&encryptedEmail=AgF5H0_BKoj_QAAAAWm1TxKN2zG2mMzOajWiit29oACyYZK3qMrCQP_3jItNBDqCOMy1N-82IH6ksMgLu8REWg&requestSubmissionId=AgHB5zw4jNTDegAAAWm1TxKWL_bzYWvdzl2x7GeP0X-Jge4-eBkgRgH9dOX4XKF-XB0w4xl3PlHOWdFAdS1jvJTj2STLk4A6wcPnpTYnZSQ&oneTimeToken=-725034495336784533&_sig=25THTfbDvQ58I1");
