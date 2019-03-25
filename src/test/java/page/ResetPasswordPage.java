@@ -25,8 +25,8 @@ public class ResetPasswordPage {
 
     public boolean isPageLoaded() {
         return retypeNewPasswordField.isDisplayed()
-                && driver.getCurrentUrl().contains("/password-reset")
-                && driver.getTitle().contains("Reset Your Password | LinkedIn");
+                && driver.getCurrentUrl().contains("/password-reset");
+              //  && driver.getTitle().contains("Reset Your Password | LinkedIn");
 
     }
 
