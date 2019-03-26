@@ -5,15 +5,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ResendLinkPage {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
+
+public class ResendLinkPage{
     private WebDriver driver;
+    private String message;
 
     @FindBy(xpath = "//button[@id='resend-url']")
     private WebElement resendLinkfield;
 
 
-    public ResendLinkPage(WebDriver driver) {
+
+    public ResendLinkPage(WebDriver driver,String message) {
         this.driver = driver;
+        this.message= message;
         PageFactory.initElements(driver, this);
     }
 
@@ -23,12 +33,41 @@ public class ResendLinkPage {
                // && driver.getTitle().contains();
     }
 
-    public ResetPasswordPage resetPasswordUrl(String link) {
-        try {
-            Thread.sleep(180000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    public String extractUrls()
+    {
+
+        List<String> containedUrls = new ArrayList<String>();
+        String urlRegex = "((https?|ftp|gopher|telnet|file):((\\/\\/)|(\\\\))+[\\w\\d:#@%\\/;$()~_?\\+-=\\\\\\.&]*)";
+        Pattern pattern = Pattern.compile(urlRegex, Pattern.CASE_INSENSITIVE);
+
+        //System.out.println("OUR MESSAGE:" + this.message);
+
+        Matcher urlMatcher = pattern.matcher(this.message);
+
+        //System.out.println("OUR MESSAGE" + this.message);
+
+        while (urlMatcher.find())
+        {
+            containedUrls.add(this.message.substring(urlMatcher.start(0), urlMatcher.end(0)));
         }
+
+        for (String str: containedUrls) {
+
+            //System.out.println("OUR LINK " + str);
+
+            if (str.contains("sig="))
+
+                return str.replace("amp;","");
+            }
+
+        return "";
+        //return containedUrls.getcontainedUrl;
+    }
+
+
+    public ResetPasswordPage resetPasswordUrl() {
+        String link = this.extractUrls();
+        System.out.println(link);
         driver.get(link);
         return new ResetPasswordPage(driver);
     }

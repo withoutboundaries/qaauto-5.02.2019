@@ -7,6 +7,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import util.GMailService;
 
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class ForgotPasswordPage {
 
     private WebDriver driver;
@@ -39,6 +43,9 @@ public class ForgotPasswordPage {
         String message = gMailService.waitMessage(messageSubject, messageTo, messageFrom, 180);
         System.out.println("Content: " + message);
 
-        return new ResendLinkPage(driver);
+        return new ResendLinkPage(driver, message);
     }
-}
+
+    }
+
+
