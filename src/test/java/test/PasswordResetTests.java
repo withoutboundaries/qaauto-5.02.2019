@@ -12,7 +12,6 @@ public class PasswordResetTests extends BaseTest {
     public void successfulPasswordResetTest() {
 
         String email = "petrenkovira19890206@gmail.com";
-      //  String link = "https://www.linkedin.com/e/v2?e=bual58-jtogcseu-vq&lipi=urn%3Ali%3Apage%3Aemail_security_password_reset_checkpoint%3BLoSIGmkFTzyBdwKyOqlcsw%3D%3D&a=checkpoint-password-reset&midToken=AQGtkiMu7W8DWA&tracking=eml-jav-saved-job&ek=security_password_reset_checkpoint&encryptedEmail=AgFmEk9QZM69AwAAAWm1Rhq_8qa_LDLHJI0N-RlZCTr2APIyaXs9BYsikp7JiZyD0S7PhaiAn_s3r60r52EmuA&requestSubmissionId=AgHdt4nTdiujegAAAWm1RhrIY5zBzFWJ5SlNy_K9FZVqCYICKiQ_Oq-_SUyi7J82u1xogUra2YAltp3B9hsZNlJxRY6DfRT7OoZSzYiYx_Y&oneTimeToken=-725034495336784533&_sig=1ns45pf8bG58I1";
         String newPasswordFieldText = "love19850526love";
         String retypeNewPasswordFieldText = "love19850526love";
 

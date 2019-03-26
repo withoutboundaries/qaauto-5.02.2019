@@ -39,12 +39,7 @@ public class ResendLinkPage{
         List<String> containedUrls = new ArrayList<String>();
         String urlRegex = "((https?|ftp|gopher|telnet|file):((\\/\\/)|(\\\\))+[\\w\\d:#@%\\/;$()~_?\\+-=\\\\\\.&]*)";
         Pattern pattern = Pattern.compile(urlRegex, Pattern.CASE_INSENSITIVE);
-
-        //System.out.println("OUR MESSAGE:" + this.message);
-
         Matcher urlMatcher = pattern.matcher(this.message);
-
-        //System.out.println("OUR MESSAGE" + this.message);
 
         while (urlMatcher.find())
         {
@@ -53,7 +48,6 @@ public class ResendLinkPage{
 
         for (String str: containedUrls) {
 
-            //System.out.println("OUR LINK " + str);
 
             if (str.contains("sig="))
 
@@ -61,13 +55,12 @@ public class ResendLinkPage{
             }
 
         return "";
-        //return containedUrls.getcontainedUrl;
+
     }
 
 
     public ResetPasswordPage resetPasswordUrl() {
         String link = this.extractUrls();
-        System.out.println(link);
         driver.get(link);
         return new ResetPasswordPage(driver);
     }
