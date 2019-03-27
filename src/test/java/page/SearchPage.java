@@ -11,8 +11,6 @@ import java.util.List;
 
 public class SearchPage extends BasePage {
 
-    private WebDriver driver;
-
     @FindBy(xpath = "//h3[contains(@class,'search-results__total')]")
     private WebElement resultsTotal;
 
@@ -23,14 +21,10 @@ public class SearchPage extends BasePage {
     public SearchPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        waitUntilElementIsVisible(resultsTotal,5);
     }
 
     public boolean isPageLoaded() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return resultsTotal.isDisplayed()
                 && driver.getCurrentUrl().contains("search/results")
                 && driver.getTitle().contains("| Search | LinkedIn");

@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ResetPasswordPage extends BasePage {
-    private WebDriver driver;
 
     @FindBy(xpath = "//input[@id='newPassword']")
     private WebElement newPasswordField;

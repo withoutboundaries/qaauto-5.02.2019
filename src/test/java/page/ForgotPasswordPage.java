@@ -14,7 +14,6 @@ import java.util.regex.Pattern;
 
 public class ForgotPasswordPage extends BasePage{
 
-    private WebDriver driver;
 
     @FindBy(xpath = "//input[@id='username']")
     private WebElement emailfield;
@@ -44,8 +43,9 @@ public class ForgotPasswordPage extends BasePage{
         String message = gMailService.waitMessage(messageSubject, messageTo, messageFrom, 180);
         System.out.println("Content: " + message);
 
-        resetPasswordUrl = StringUtils.substringBetween(message, "href=\"", "\"style=\"cursor:pointer;color:#008CC9;-webkit-text-size-adjust:100%;display:inline-block;text-decoration:none;-ms-text-size-adjust:100%;\">Reset my password")
-        .replace("amp;", "");
+        resetPasswordUrl = StringUtils.
+                substringBetween(message, "href=\"", "\"style=\"cursor:pointer;color:#008CC9;-webkit-text-size-adjust:100%;display:inline-block;text-decoration:none;-ms-text-size-adjust:100%;\">Reset my password")
+                .replace("amp;", "");
 
         System.out.println(resetPasswordUrl);
         return new ResendLinkPage(driver, message);

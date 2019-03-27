@@ -6,9 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static java.lang.Thread.sleep;
 
+
+/**
+ * Class that describes LandingPage pageObject.
+ */
 public class LandingPage extends BasePage {
-    private WebDriver driver;
 
     @FindBy(xpath = "//input[@id='login-email']")
     private WebElement userEmailField;
@@ -22,6 +26,10 @@ public class LandingPage extends BasePage {
     @FindBy(xpath = "//a[@class='link-forgot-password']")
     private WebElement forgotPasswordField;
 
+    /**
+     * Constructor of LandingPage class.
+     * @param driver Browser object from Test
+     */
     public LandingPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -31,6 +39,11 @@ public class LandingPage extends BasePage {
         userEmailField.sendKeys(userEmail);
         userPasswordField.sendKeys(userPassword);
         signInButton.click();
+        try {
+            sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         if (driver.getCurrentUrl().contains("/feed")) {
             return (T) new HomePage(driver);
         } else {

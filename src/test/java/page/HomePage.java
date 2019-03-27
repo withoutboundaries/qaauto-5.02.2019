@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class HomePage extends BasePage {
-    private WebDriver driver;
 
     @FindBy(xpath = "//li[@id='profile-nav-item']")
     private WebElement profileMenuItem;

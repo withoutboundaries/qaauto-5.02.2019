@@ -13,7 +13,6 @@ import java.util.regex.Pattern;
 
 
 public class ResendLinkPage extends BasePage{
-    private WebDriver driver;
     private String message;
 
     @FindBy(xpath = "//button[@id='resend-url']")

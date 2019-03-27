@@ -24,13 +24,6 @@ public class PasswordResetTests extends BaseTest {
 
         //3
         ResendLinkPage resendLinkPage = forgotPasswordPage.input(email);
-/*
-        try {
-            Thread.sleep(120000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-*/
         Assert.assertTrue(resendLinkPage.isPageLoaded(), "Resend Link page is not loaded");
 
         //4

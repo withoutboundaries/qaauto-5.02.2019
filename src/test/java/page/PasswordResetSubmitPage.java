@@ -7,9 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class PasswordResetSubmitPage extends BasePage {
 
-    private WebDriver driver;
-
-
     @FindBy (xpath ="//button[@id='reset-password-submit-button']")
     private WebElement goToHomePageButton;
 
