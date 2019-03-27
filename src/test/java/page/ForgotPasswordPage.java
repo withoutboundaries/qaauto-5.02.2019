@@ -1,5 +1,6 @@
 package page;
 
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ForgotPasswordPage {
+public class ForgotPasswordPage extends BasePage{
 
     private WebDriver driver;
 
@@ -43,6 +44,10 @@ public class ForgotPasswordPage {
         String message = gMailService.waitMessage(messageSubject, messageTo, messageFrom, 180);
         System.out.println("Content: " + message);
 
+        resetPasswordUrl = StringUtils.substringBetween(message, "href=\"", "\"style=\"cursor:pointer;color:#008CC9;-webkit-text-size-adjust:100%;display:inline-block;text-decoration:none;-ms-text-size-adjust:100%;\">Reset my password")
+        .replace("amp;", "");
+
+        System.out.println(resetPasswordUrl);
         return new ResendLinkPage(driver, message);
     }
 

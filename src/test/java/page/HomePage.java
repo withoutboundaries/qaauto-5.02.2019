@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class HomePage {
+public class HomePage extends BasePage {
     private WebDriver driver;
 
     @FindBy(xpath = "//li[@id='profile-nav-item']")

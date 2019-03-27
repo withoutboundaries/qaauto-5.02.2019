@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class LandingPage {
+public class LandingPage extends BasePage {
     private WebDriver driver;
 
     @FindBy(xpath = "//input[@id='login-email']")

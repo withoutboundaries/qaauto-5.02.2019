@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 
 
-public class ResendLinkPage{
+public class ResendLinkPage extends BasePage{
     private WebDriver driver;
     private String message;
 
@@ -35,7 +35,6 @@ public class ResendLinkPage{
 
     public String extractUrls()
     {
-
         List<String> containedUrls = new ArrayList<String>();
         String urlRegex = "((https?|ftp|gopher|telnet|file):((\\/\\/)|(\\\\))+[\\w\\d:#@%\\/;$()~_?\\+-=\\\\\\.&]*)";
         Pattern pattern = Pattern.compile(urlRegex, Pattern.CASE_INSENSITIVE);
@@ -48,7 +47,6 @@ public class ResendLinkPage{
 
         for (String str: containedUrls) {
 
-
             if (str.contains("sig="))
 
                 return str.replace("amp;","");
@@ -58,10 +56,12 @@ public class ResendLinkPage{
 
     }
 
-
-    public ResetPasswordPage resetPasswordUrl() {
-        String link = this.extractUrls();
-        driver.get(link);
+    public ResetPasswordPage getresetPasswordUrl() {
+       /*
+       String link = extractUrls();
+       driver.get(link);
+       */
+        driver.get(resetPasswordUrl);
         return new ResetPasswordPage(driver);
     }
 

@@ -34,10 +34,7 @@ public class PasswordResetTests extends BaseTest {
         Assert.assertTrue(resendLinkPage.isPageLoaded(), "Resend Link page is not loaded");
 
         //4
-        //ResendLinkPage resendLinkPage1 =  new ResendLinkPage();
-
-        //String .extractUrls(link);
-        ResetPasswordPage resetPasswordPage = resendLinkPage.resetPasswordUrl();
+        ResetPasswordPage resetPasswordPage = resendLinkPage.getresetPasswordUrl();
         Assert.assertTrue(resetPasswordPage.isPageLoaded(), "Reset Password page is not loaded");
 
 
